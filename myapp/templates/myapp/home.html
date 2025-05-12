@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--<h2>My First Django Page</h2>
+    <p>This page is rendered using HTML.</p>> -->
+    <h2>{{ head }}</h2>
+    <p>{{ message }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    
+    {% if name %}
+        <p>Thank you for submitting your name, {{ name }}!</p>
+    {% endif %}
+</body>
+</html>
