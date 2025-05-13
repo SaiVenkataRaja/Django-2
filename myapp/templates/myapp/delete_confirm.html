@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 50%;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: red;
+            padding-left: 15px;
+            padding-right: 15px;
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            color: white;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 15px;
+
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+        .buts{
+            margin-top: 5px;
+        }
+        a {
+            text-decoration: none;
+            margin-left: 15px;
+            background-color: green;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin-top: 5   px;
+            color: white;
+            border-radius: 8px;
+        }
+        a:hover {
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Delete Confirmation</h2>
+        <p>Are you sure you want to delete {{ student.name }}?</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="buts">
+                <button type="submit">Yes, Delete</button>
+                <a id="cancel" href="{% url 'student_list' %}">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

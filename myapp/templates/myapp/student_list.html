@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-       
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f7fc;
@@ -20,7 +20,6 @@
             line-height: 1.6;
         }
 
-        /* Container to center the content */
         .container {
             width: 50%;
             max-width: 700px;
@@ -69,7 +68,60 @@
             text-align: center;
         }
 
-        /* Responsive Design */
+        a {
+            background-color: #e0e26fc8;
+            color: white;
+            text-decoration: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            font-size: medium;
+
+        }
+
+        a:hover {
+            background-color: skyblue;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            display: grid;
+            grid-template-columns: 1.5fr 0.5fr 2fr 1fr 1fr;
+            
+            align-items: center;
+            gap: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #afcd57;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        ul li span {
+            font-weight: 500;
+        }
+
+        
+        ul li a {
+            background-color: #6c7ae0;
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        ul li a:hover {
+            background-color: skyblue;
+        }
+
         @media (max-width: 600px) {
             .container {
                 width: 90%;
@@ -89,9 +141,29 @@
                 margin-bottom: 5px;
             }
         }
+        #delete_but {
+            background-color: red;
+            transition: background-color 0.3s;
+        }
+        
+        #delete_but:hover {
+            background-color: orange;
+        }
+        .lo {
+            align-items: end;
+        }
     </style>
 </head>
+
 <body>
+    <div class="lo">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}</p>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
     <div class="container">
         <h2>Student List</h2>
         {% if students %}
@@ -100,7 +172,8 @@
             <li>
                 <span> {{ student.name }} </span>
                 <span> {{ student.age }} </span>
-                <span>{{ student.email }}</span>  <a href="{% url 'edit_student' student.id %}">Edit</a>
+                <span>{{ student.email }}</span> <a href="{% url 'edit_student' student.id %}">Edit</a> <a
+                    href="{% url 'delete_student' student.id %} " id="delete_but">Delete</a>
             </li>
             {% endfor %}
         </ul>
@@ -109,4 +182,5 @@
         {% endif %}
     </div>
 </body>
+
 </html>

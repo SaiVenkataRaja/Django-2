@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
         }
 
         h2 {
-            color: #4CAF50;
+            color: #2c7a7b;
             font-size: 2rem;
             margin-bottom: 20px;
         }
@@ -49,7 +50,9 @@
             color: #555;
         }
 
-        input[type="text"], input[type="number"], input[type="email"] {
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
@@ -58,33 +61,33 @@
             font-size: 1rem;
         }
 
-        button {
-            background-color: #4CAF50;
+        button[type="submit"] {
+            background-color: #2c7a7b;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 6px;
             font-size: 1rem;
-            margin-top: 20px;
-            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
 
-        button:hover {
-            background-color: skyblue;
+        button[type="submit"]:hover {
+            background-color: #38b2ac;
         }
 
         .form-group input:focus {
             border-color: #f4f7fc;
         }
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Enter Student Details</h2>
         <form method="POST">
-        
+
             {% csrf_token %}
             <div class="form-group">
                 <label for="id_name">Name</label>
@@ -98,9 +101,10 @@
                 <label for="id_email">Email</label>
                 {{ form.email }}
             </div>
-        
+
             <button type="submit">Submit</button>
         </form>
     </div>
 </body>
+
 </html>
